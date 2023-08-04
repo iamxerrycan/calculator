@@ -1,0 +1,6 @@
+.header {
+  flex: 1;
+  background-color: var(--bg-color-1);
+  padding: 20px;
+  /* overflow-y: scroll; */
+}
