@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Header from "./Component/Header/Header";
 import "./App.css";
-import moonIcon from "../src/moon.png";
-import sunIcon from "../src/sun.png";
+import moonIcon from "../src/monn.png";
+import sunIcon from "../src/sunn.png";
 import Keypad from "./Component/Keypad/Keypad";
 
 console.log(sunIcon);
@@ -32,3 +32,4 @@ export default function App() {
     </div>
   );
 }
+

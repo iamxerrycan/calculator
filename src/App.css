@@ -4,6 +4,23 @@
   box-sizing: border-box;
 } */
 
+.costom_scroll::-webkit-scrollbar{
+  height: 5px;
+  width: 5px;
+
+}
+.costom_scroll::-webkit-scrollbar-track{
+  background-color:transparent;
+}
+
+.costom_scroll::-webkit-scrollbar-thumb{
+  background-color: rgba(0,0,0,0.14);
+}
+.costom_scroll::-webkit-scrollbar-thumb:hover{
+  background-color: grey;
+}
+
+
 .app{
 --bg-color-1:#9db3ed;
 --bg-color-2:#bac9d3;
@@ -19,7 +36,7 @@
 }
 
 .app {
-  background: var(--bg-color-1);
+  background: black;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -52,8 +69,8 @@
   gap: 10px;
 }
 .app_calculator_navbar img{
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
 
 }
 .app_calculator_navbar_toggle{
