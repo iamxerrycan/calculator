@@ -9,9 +9,31 @@ console.log(sunIcon);
 
 export default function App() {
   const [isDarkmode, setIsDarkmode] = useState(false);
+  const [expression, setExpression] = useState("");
+  const [history, setHistory] = useState([]);
+  const [result, setResult] = useState("");
+
+  const handleButtonClick = (value) => {
+    if (value === "=") {
+      try {
+        const evalResult = eval(expression);
+        setResult(evalResult);
+        setHistory((prevHistory) => [...prevHistory, expression]);
+        setExpression(String(evalResult));
+      } catch (error) {
+        setResult("Error");
+      }
+    } else if (value === "⌫") {
+      setExpression((prevExpression) =>
+        prevExpression.length > 0 ? prevExpression.slice(0, -1) : prevExpression
+      );
+    } else {
+      setExpression((prevExpression) => prevExpression + value);
+    }
+  };
 
   return (
-    <div className="app" data-theme={isDarkmode? "dark" :""}>
+    <div className="app" data-theme={isDarkmode ? "dark" : ""}>
       <div className="app_calculator">
         <div className="app_calculator_navbar">
           <div
@@ -26,10 +48,9 @@ export default function App() {
           </div>
           <img src={isDarkmode ? moonIcon : sunIcon} alt="mode" />
         </div>
-        <Header />
-        <Keypad/>
+        <Header expression={expression} history={history} result={result} />
+        <Keypad onButtonClick={handleButtonClick} />
       </div>
     </div>
   );
 }
-

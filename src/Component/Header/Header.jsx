@@ -1,19 +1,18 @@
 import React from "react";
 import "../Header/Header.css";
 
-export default function Header() {
+export default function Header({expression , history , result}) {
   return (
     <div className="header costom_scroll" >
       <div className="header_history">
-        <p>50+50</p>
-        <p>856458768</p>
-        <p>74632</p>
-        <p>6+7_77</p>
+      {history.map((item, index) => (
+          <p key={index}>{item}</p>
+        ))}
       </div>  
       <div className="header_expression costom_scroll">
-        <p>50+50</p>
+        <p>{expression}</p>
       </div>
-      <p className="header_result">200</p>
+      <p className="header_result">{result}</p>
     </div>
   );
 }

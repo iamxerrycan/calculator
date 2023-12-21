@@ -1,99 +1,85 @@
-import React from "react";
-import "../Keypad/Keypad.css";
+import React, { useState } from "react";
+import "./Keypad.css";
 
-export default function Keypad() {
+export default function Keypad({ onButtonClick }) {
+  const [expression, setExpression] = useState("");
+
+  const handleClick = (value) => {
+    if (["+", "-", "*", "/", "⌫"].includes(value)) {
+      handleArithmeticOperator(value);
+    } else {
+      onButtonClick(value);
+    }
+  };
+
+  const handleBackspace = () => {
+    handleArithmeticOperator("⌫");
+    console.log("backspace clicked");
+  };
+
+  const handleArithmeticOperator = (operator) => {
+    if (operator === "⌫") {
+      setExpression((prevExpression) => prevExpression.slice(0, -1));
+    } else {
+      onButtonClick(operator);
+    }
+
+    if (operator === "=") {
+      try {
+        let result = eval(expression);
+        setExpression(String(result));
+      } catch (error) {
+        setExpression("Error");
+      }
+    } else {
+      setExpression((prevExpression) => prevExpression + operator);
+    }
+  };
+
   const keys = [
-    {
-      keyCode: 55,
-      label: "7",
-    },
-    {
-      keyCode: 56,
-      label: "8",
-    },
-    {
-      keyCode: 57,
-      label: "9",
-    },
-    {
-      keyCode: 52,
-      label: "4",
-    },
-    {
-      keyCode: 53,
-      label: "5",
-    },
-    {
-      keyCode: 54,
-      label: "6",
-    },
-    {
-      keyCode: 49,
-      label: "1",
-    },
-    {
-      keyCode: 50,
-      label: "2",
-    },
-    {
-      keyCode: 51,
-      label: "3",
-    },
-    {
-      keyCode: 48,
-      label: "0",
-    },
-    {
-      keyCode: 190,
-      label: ".",
-    },
-    {
-      keyCode: 13,
-      label: "=",
-    },
+    { label: "7" },
+    { label: "8" },
+    { label: "9" },
+    { label: "4" },
+    { label: "5" },
+    { label: "6" },
+    { label: "1" },
+    { label: "2" },
+    { label: "3" },
+    { label: "0" },
+    { label: "." },
+    { label: "=" },
   ];
 
   const symbol = [
-    {
-      label: "⌫",
-      keyCode: 8,
-      value: "backspace",
-    },
-    {
-      label: "÷",
-      keyCode: 111,
-      value: "/",
-    },
-    {
-      label: "×",
-      keyCode: 56,
-      value: "*",
-    },
-    {
-      label: "﹣",
-      keyCode: 109,
-      value: "-",
-    },
-    {
-      label: "+",
-      keyCode: 107,
-      value: "+",
-    },
+    { label: "⌫", value: "⌫" },
+    { label: "÷", value: "/" },
+    { label: "×", value: "*" },
+    { label: "−", value: "-" },
+    { label: "+", value: "+" },
   ];
-
 
   return (
     <div className="keypad">
       <div className="keypad_keys">
-        {keys.map((item, index) =>
-          <p key={index}> {item.label}</p>
-        )}
+        {keys.map((item, index) => (
+          <p
+            key={index}
+            onClick={() =>
+              item.label === "⌫" ? handleBackspace() : handleClick(item.label)
+            }
+          >
+            {item.label}
+          </p>
+        ))}
       </div>
 
       <div className="keypad_symbol">
-        {symbol.map((item, index) =>
-          <p key={index}>{item.label}</p>
-        )}
+        {symbol.map((item, index) => (
+          <p key={index} onClick={() => handleArithmeticOperator(item.value)}>
+            {item.label}
+          </p>
+        ))}
       </div>
     </div>
   );
