@@ -24,6 +24,7 @@ export default function App() {
         setResult("Error");
       }
     } else if (value === "⌫") {
+      setResult('')
       setExpression((prevExpression) =>
         prevExpression.length > 0 ? prevExpression.slice(0, -1) : prevExpression
       );

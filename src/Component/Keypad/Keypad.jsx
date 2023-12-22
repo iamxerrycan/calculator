@@ -2,39 +2,10 @@ import React, { useState } from "react";
 import "./Keypad.css";
 
 export default function Keypad({ onButtonClick }) {
-  const [expression, setExpression] = useState("");
-
   const handleClick = (value) => {
-    if (["+", "-", "*", "/", "⌫"].includes(value)) {
-      handleArithmeticOperator(value);
-    } else {
-      onButtonClick(value);
-    }
+    onButtonClick(value);
   };
 
-  const handleBackspace = () => {
-    handleArithmeticOperator("⌫");
-    console.log("backspace clicked");
-  };
-
-  const handleArithmeticOperator = (operator) => {
-    if (operator === "⌫") {
-      setExpression((prevExpression) => prevExpression.slice(0, -1));
-    } else {
-      onButtonClick(operator);
-    }
-
-    if (operator === "=") {
-      try {
-        let result = eval(expression);
-        setExpression(String(result));
-      } catch (error) {
-        setExpression("Error");
-      }
-    } else {
-      setExpression((prevExpression) => prevExpression + operator);
-    }
-  };
 
   const keys = [
     { label: "7" },
@@ -66,7 +37,7 @@ export default function Keypad({ onButtonClick }) {
           <p
             key={index}
             onClick={() =>
-              item.label === "⌫" ? handleBackspace() : handleClick(item.label)
+               handleClick(item.label)
             }
           >
             {item.label}
@@ -76,7 +47,7 @@ export default function Keypad({ onButtonClick }) {
 
       <div className="keypad_symbol">
         {symbol.map((item, index) => (
-          <p key={index} onClick={() => handleArithmeticOperator(item.value)}>
+          <p key={index} onClick={() => handleClick(item.value)}>
             {item.label}
           </p>
         ))}
