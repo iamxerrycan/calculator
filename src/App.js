@@ -32,6 +32,12 @@ export default function App() {
     }
   };
 
+  const handleClear = () => {
+    setExpression("");
+    setHistory([]);
+    setResult("");
+  };
+
   return (
     <div className="app" data-theme={isDarkmode ? "dark" : ""}>
       <div className="app_calculator">
@@ -49,6 +55,7 @@ export default function App() {
           <img src={isDarkmode ? moonIcon : sunIcon} alt="mode" />
         </div>
         <Header expression={expression} history={history} result={result} />
+        <button onClick={handleClear} style={{backgroundColor:"black", color:"white", width:"100%"} }>AC</button>
         <Keypad onButtonClick={handleButtonClick} />
       </div>
     </div>
