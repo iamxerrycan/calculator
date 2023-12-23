@@ -13,6 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow:  0 0 5px cyan , 0 0 25px cyan , 0 0 100px rgb(183, 44, 201) ,0 0 200px cyan ;
 
 }
 
