@@ -25,6 +25,8 @@
   --bg-color-1: #bac9d3;
   --text-color-1: #0b1537;
   --text-color-2: #636363;
+  width: auto;
+  height: auto;
 }
 
 .app[data-theme="dark"] {
@@ -48,7 +50,7 @@
   height: 450px;
   width: 250px;
   border-radius: 30px;
-  box-shadow: 1px -1px 20px rgba(0, 0,0,0.35);
+  box-shadow: 15px 15px 20px 8px rgba(166, 211, 6, 0.3) , rgba(200, 184, 7, 0.3) ;
   position: relative;
   overflow: hidden;
   display: flex;
