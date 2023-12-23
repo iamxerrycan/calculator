@@ -94,3 +94,14 @@
 .app_calculator_navbar_toggle_circle_active{
   margin-left: 15px;
 }
+
+@media screen and (max-width:480px){
+
+  .app{
+    width: auto;
+    height: fit-content;
+  }
+  .app_calculator{
+
+  }
+}
