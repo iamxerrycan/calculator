@@ -20,20 +20,20 @@
   background-color: grey;
 }
 
-
-.app{
---bg-color-1:#9db3ed;
---bg-color-2:#bac9d3;
---text-color-1: #0b1537;
---text-color-2: #636363;
+.app {
+  --bg-color-2: #9db3ed;
+  --bg-color-1: #bac9d3;
+  --text-color-1: #0b1537;
+  --text-color-2: #636363;
 }
 
-.app[data-theme ="dark"]{
---bg-color-1:#1D267D;
---bg-color-2:#0C134F;
---text-color-1: #fbfcfc;
---text-color-2: #bbbcbc;
+.app[data-theme="dark"] {
+  --bg-color-1: #3a3a3a;
+  --bg-color-2: #1a1a1a;
+  --text-color-1: #f0f0f0;
+  --text-color-2: #999999;
 }
+
 
 .app {
   background: black;
