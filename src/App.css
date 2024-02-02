@@ -38,7 +38,7 @@
 
 
 .app {
-  background-image: linear-gradient(to bottom, #5ff7ca, #005c40);
+  background-color:black ;
   min-height: 100vh;
   display: flex;
   justify-content: center;
